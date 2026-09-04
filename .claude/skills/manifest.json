@@ -1,0 +1,112 @@
+{
+  "package": "excel-agent-skills",
+  "version": "1.0.0",
+  "language": "pt-BR",
+  "entrypoint": "00-excel-orchestrator/SKILL.md",
+  "skills": [
+    {
+      "id": "00-excel-orchestrator",
+      "path": "00-excel-orchestrator/SKILL.md"
+    },
+    {
+      "id": "excel-workbook-inspector",
+      "path": "excel-workbook-inspector/SKILL.md"
+    },
+    {
+      "id": "excel-workbook-engine",
+      "path": "excel-workbook-engine/SKILL.md"
+    },
+    {
+      "id": "excel-data-editor",
+      "path": "excel-data-editor/SKILL.md"
+    },
+    {
+      "id": "excel-formula-engine",
+      "path": "excel-formula-engine/SKILL.md"
+    },
+    {
+      "id": "excel-formatting",
+      "path": "excel-formatting/SKILL.md"
+    },
+    {
+      "id": "excel-tables-ranges",
+      "path": "excel-tables-ranges/SKILL.md"
+    },
+    {
+      "id": "excel-chart-engine",
+      "path": "excel-chart-engine/SKILL.md"
+    },
+    {
+      "id": "excel-dashboard-builder",
+      "path": "excel-dashboard-builder/SKILL.md"
+    },
+    {
+      "id": "excel-pivot-analysis",
+      "path": "excel-pivot-analysis/SKILL.md"
+    },
+    {
+      "id": "excel-data-cleaning",
+      "path": "excel-data-cleaning/SKILL.md"
+    },
+    {
+      "id": "excel-data-validation",
+      "path": "excel-data-validation/SKILL.md"
+    },
+    {
+      "id": "excel-conditional-formatting",
+      "path": "excel-conditional-formatting/SKILL.md"
+    },
+    {
+      "id": "excel-audit",
+      "path": "excel-audit/SKILL.md"
+    },
+    {
+      "id": "excel-reconciliation",
+      "path": "excel-reconciliation/SKILL.md"
+    },
+    {
+      "id": "excel-financial-modeling",
+      "path": "excel-financial-modeling/SKILL.md"
+    },
+    {
+      "id": "excel-render-validation",
+      "path": "excel-render-validation/SKILL.md"
+    },
+    {
+      "id": "excel-preserve-workbook",
+      "path": "excel-preserve-workbook/SKILL.md"
+    },
+    {
+      "id": "excel-change-log",
+      "path": "excel-change-log/SKILL.md"
+    },
+    {
+      "id": "excel-quality-control",
+      "path": "excel-quality-control/SKILL.md"
+    },
+    {
+      "id": "ap-aging-analysis",
+      "path": "ap-aging-analysis/SKILL.md"
+    },
+    {
+      "id": "classification-validation",
+      "path": "classification-validation/SKILL.md"
+    },
+    {
+      "id": "executive-summary-builder",
+      "path": "executive-summary-builder/SKILL.md"
+    },
+    {
+      "id": "supplier-analysis",
+      "path": "supplier-analysis/SKILL.md"
+    },
+    {
+      "id": "payment-status-analysis",
+      "path": "payment-status-analysis/SKILL.md"
+    },
+    {
+      "id": "aging-bucket-validation",
+      "path": "aging-bucket-validation/SKILL.md"
+    }
+  ]
+}
