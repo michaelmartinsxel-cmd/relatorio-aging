@@ -73,12 +73,19 @@ app.whenReady().then(() => {
   })
 
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
+    // The Vite dev server injects inline scripts (HMR client, React Fast
+    // Refresh preamble) and needs eval + a websocket connection to itself,
+    // none of which the production CSP allows. Keep the strict policy for
+    // the packaged app and relax it only when loading from the dev server.
+    const csp =
+      is.dev && process.env['ELECTRON_RENDERER_URL']
+        ? "default-src 'self' http://localhost:*; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:*; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http://localhost:* ws://localhost:*;"
+        : "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';"
+
     callback({
       responseHeaders: {
         ...details.responseHeaders,
-        'Content-Security-Policy': [
-          "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';"
-        ]
+        'Content-Security-Policy': [csp]
       }
     })
   })
