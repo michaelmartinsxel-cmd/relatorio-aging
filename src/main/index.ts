@@ -5,6 +5,12 @@ import { registerIpcHandlers } from './ipc/handlers'
 
 let mainWindow: BrowserWindow | null = null
 
+// Some Windows machines (VMs, RDP sessions, certain GPU/driver combos) fail
+// to composite the renderer's GPU output while still drawing the native
+// window chrome — the classic "blank white window" symptom. Disabling
+// hardware acceleration falls back to software rendering and avoids it.
+app.disableHardwareAcceleration()
+
 function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 1440,
@@ -27,6 +33,19 @@ function createWindow(): void {
 
   mainWindow.on('ready-to-show', () => {
     mainWindow?.show()
+  })
+  // Safety net: on some Windows setups 'ready-to-show' never fires even
+  // though the page loaded fine, leaving the window permanently hidden or
+  // stuck blank behind native chrome. Force a show once the load settles.
+  mainWindow.webContents.on('did-finish-load', () => {
+    if (mainWindow && !mainWindow.isVisible()) mainWindow.show()
+  })
+
+  mainWindow.webContents.on('console-message', (_e, level, message, line, sourceId) => {
+    console.log(`[renderer:${level}] ${message} (${sourceId}:${line})`)
+  })
+  mainWindow.webContents.on('did-fail-load', (_e, errorCode, errorDescription, validatedURL) => {
+    console.log(`[did-fail-load] ${errorCode} ${errorDescription} ${validatedURL}`)
   })
 
   // Block any attempt to open new windows or navigate away from the app shell.
