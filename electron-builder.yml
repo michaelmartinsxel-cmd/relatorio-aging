@@ -1,0 +1,23 @@
+appId: com.relatorio-aging.ap-aging-report
+productName: AP Aging Report
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**/*
+  - package.json
+asarUnpack:
+  - '**/*.node'
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  # No custom icon shipped yet — electron-builder falls back to its
+  # default icon. Drop an icon.ico into build/ and uncomment to brand it.
+  # icon: build/icon.ico
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+publish: null
